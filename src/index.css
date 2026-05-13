@@ -1,3 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #1e1a17;
+  --cork: #2e2520;
+  --header-bg: #111;
+  --note-yellow: #f9ef7a;
+  --note-pink: #f9a8d4;
+  --note-blue: #93c5fd;
+  --note-green: #86efac;
+  --note-orange: #fdba74;
+  --accent: #f59e0b;
+  --text-dark: #1c1917;
+  --text-light: #e5e0d8;
+  --shadow: rgba(0, 0, 0, 0.5);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,8 +22,14 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(94, 60, 20, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(120, 80, 30, 0.1) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%231e1a17'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23ffffff08'/%3E%3C/svg%3E");
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 input,
@@ -15,153 +38,262 @@ textarea {
   resize: none;
 }
 
-.notes-list {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-  margin-left: 80px;
-}
-
-.app-header__title {
-  margin: 10px 20px 0px;
-  font-family: Arial, sans-serif;
-}
-
-.app-header__controls {
+/* ── HEADER ── */
+header {
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+  padding: 1.2rem 2rem;
   display: flex;
   align-items: center;
-  margin: 10px 0 0 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.search,
-.add-new {
-  font-size: 14px;
-  padding: 5px;
-  margin: 8px;
+.header-title h1 {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1.6rem;
+  color: var(--text-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.search {
-  flex-grow: 1;
-  max-width: 300px;
-}
-
-.add-new {
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 8px;
-  font-weight: bolder;
-  background-color: #65e35b;
-  outline: none;
-}
-
-.note {
-  font-family: "Permanent Marker", cursive;
-  width: 200px;
-  height: 200px;
-  margin: 10px;
-  background-color: lightyellow;
-  border: 1px solid grey;
-  box-shadow: 2px 2px 3px lightgrey;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.note__title,
-.note__description {
-  font-family: "Permanent Marker", cursive;
-  width: 100%;
-  padding: 8px 14px;
-  background: yellow;
-}
-
-.note__title {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.note__description {
-  flex-grow: 1;
-  font-size: 14px;
-}
-
-.note__delete {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  font-size: 20px;
-  color: red;
-  padding: 5px;
-}
-
-.note__delete:hover {
-  color: black;
-  cursor: pointer;
+.header-title h1 span {
+  color: var(--accent);
+  font-weight: 500;
 }
 
 .a_side {
-  padding-left: 10rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0;
 }
 
-/* Extra small devices (phones, 0px and up) */
-@media (max-width: 575.98px) {
-  .a_side
-  {
-   padding-left: 4rem; 
+.add-new {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  background: var(--accent);
+  color: #111;
+  border: none;
+  letter-spacing: 0.04em;
+  transition: background 0.2s ease, transform 0.1s ease;
+  white-space: nowrap;
+}
+
+.add-new:hover {
+  background: #fbbf24;
+  transform: translateY(-1px);
+}
+
+.add-new:active {
+  transform: translateY(0);
+}
+
+.search {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.06);
+  color: var(--text-light);
+  width: 220px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.search::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+
+.search:focus {
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.09);
+}
+
+/* ── NOTES BOARD ── */
+.notes-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2.5rem 2rem;
+  margin: 0;
+  list-style: none;
+  align-items: flex-start;
+}
+
+/* ── NOTE CARD ── */
+.note {
+  width: 220px;
+  min-height: 220px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 2px;
+  box-shadow:
+    0 6px 16px var(--shadow),
+    0 1px 3px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: noteAppear 0.3s ease forwards;
+}
+
+@keyframes noteAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9) rotate(var(--rot, -2deg));
   }
-
-  .header-title h1{
-
-   /* padding-left: 3rem;  */
-   text-align:center;
-
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(var(--rot, -2deg));
   }
 }
 
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .header-title{
-
-    text-align:center;
-  }
-  .a_side {
-    padding-left: 6rem;
-  }
+/* Alternating slight rotations for that real pinboard feel */
+.note:nth-child(odd) {
+  --rot: -1.5deg;
+  background-color: var(--note-yellow);
+}
+.note:nth-child(even) {
+  --rot: 1.2deg;
+  background-color: var(--note-green);
+}
+.note:nth-child(3n) {
+  --rot: -0.8deg;
+  background-color: var(--note-pink);
+}
+.note:nth-child(4n) {
+  --rot: 2deg;
+  background-color: var(--note-blue);
+}
+.note:nth-child(5n) {
+  --rot: -1deg;
+  background-color: var(--note-orange);
 }
 
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .header-title{
-
-    text-align:center;
-  }
-  .a_side {
-    padding-left: 6rem;
-  }
+.note:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.03);
+  box-shadow:
+    0 16px 40px rgba(0,0,0,0.6),
+    0 2px 6px rgba(0,0,0,0.4);
+  z-index: 10;
 }
 
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-
-  .header-title{
-
-    text-align:center;
-  }
-  .a_side {
-    padding-left: 6rem;
-  }
+/* Pin at the top */
+.note::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 40% 35%, #ff6b6b, #c0392b);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  z-index: 2;
 }
 
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-  /* Styles for extra large screens */
+/* Fold corner effect */
+.note::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 20px 20px;
+  border-color: transparent transparent rgba(0,0,0,0.12) transparent;
+}
 
-  .header-title{
+/* ── NOTE INPUTS ── */
+.note__title {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  font-weight: 700;
+  width: 100%;
+  padding: 14px 36px 8px 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed rgba(0,0,0,0.2);
+  color: var(--text-dark);
+}
 
-    text-align:center;
+.note__title::placeholder {
+  color: rgba(0,0,0,0.3);
+  font-weight: 400;
+}
+
+.note__description {
+  font-family: 'Caveat', cursive;
+  font-size: 15px;
+  flex-grow: 1;
+  width: 100%;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+.note__description::placeholder {
+  color: rgba(0,0,0,0.3);
+}
+
+/* ── DELETE BUTTON ── */
+.note__delete {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: rgba(0,0,0,0.25);
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
+}
+
+.note__delete:hover {
+  background: rgba(0,0,0,0.12);
+  color: #c0392b;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 575px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
   }
-  .a_side {
-    padding-left: 6rem;
+
+  .header-title h1 {
+    font-size: 1.2rem;
+  }
+
+  .notes-list {
+    padding: 1.5rem 1rem;
+    justify-content: center;
+  }
+
+  .search {
+    width: 160px;
   }
 }
