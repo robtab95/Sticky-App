@@ -1,4 +1,5 @@
 import React from "react";
+
 const Note = (props) => {
   const updateTitle = (e) => {
     const updatedValue = e.target.value;
@@ -9,17 +10,17 @@ const Note = (props) => {
   const updateDescription = (e) => {
     const updatedValue = e.target.value;
     const editMeId = props.note.id;
-    props.onType(editMeId, "tdescription", updatedValue);
+    props.onType(editMeId, "description", updatedValue); // fixed: was "tdescription"
   };
 
   const clickDelete = () => {
     props.removeNote(props.note.id);
   };
+
   return (
     <li className="note">
-      {console.log(props)}
       <input
-        className=" note__title"
+        className="note__title"
         type="text"
         placeholder="Title"
         value={props.note.title}
@@ -27,13 +28,11 @@ const Note = (props) => {
       />
       <textarea
         className="note__description"
-        placeholder="Description..."
+        placeholder="Write something..."
         value={props.note.description}
         onChange={updateDescription}
       />
-      <span className="note__delete" onClick={clickDelete}>
-        X
-      </span>
+      <span className="note__delete" onClick={clickDelete}>✕</span>
     </li>
   );
 };

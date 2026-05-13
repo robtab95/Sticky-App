@@ -221,7 +221,7 @@ header {
 /* ── NOTE INPUTS ── */
 .note__title {
   font-family: 'Caveat', cursive;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 700;
   width: 100%;
   padding: 14px 36px 8px 14px;
@@ -238,7 +238,7 @@ header {
 
 .note__description {
   font-family: 'Caveat', cursive;
-  font-size: 15px;
+  font-size: 20px;
   flex-grow: 1;
   width: 100%;
   padding: 10px 14px;
