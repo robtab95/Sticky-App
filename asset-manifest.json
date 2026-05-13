@@ -1,13 +1,13 @@
 {
-  "main.css": "/Sticky-App/static/css/main.e295ab96.chunk.css",
-  "main.js": "/Sticky-App/static/js/main.a03c1535.chunk.js",
-  "main.js.map": "/Sticky-App/static/js/main.a03c1535.chunk.js.map",
+  "main.css": "/Sticky-App/static/css/main.03383f26.chunk.css",
+  "main.js": "/Sticky-App/static/js/main.596602dc.chunk.js",
+  "main.js.map": "/Sticky-App/static/js/main.596602dc.chunk.js.map",
   "runtime~main.js": "/Sticky-App/static/js/runtime~main.0f148440.js",
   "runtime~main.js.map": "/Sticky-App/static/js/runtime~main.0f148440.js.map",
   "static/js/2.da757658.chunk.js": "/Sticky-App/static/js/2.da757658.chunk.js",
   "static/js/2.da757658.chunk.js.map": "/Sticky-App/static/js/2.da757658.chunk.js.map",
   "index.html": "/Sticky-App/index.html",
-  "precache-manifest.82c28dd4c1e2e46d515056eada50fec1.js": "/Sticky-App/precache-manifest.82c28dd4c1e2e46d515056eada50fec1.js",
+  "precache-manifest.04a9d794579cc0b678d518f94712a03a.js": "/Sticky-App/precache-manifest.04a9d794579cc0b678d518f94712a03a.js",
   "service-worker.js": "/Sticky-App/service-worker.js",
-  "static/css/main.e295ab96.chunk.css.map": "/Sticky-App/static/css/main.e295ab96.chunk.css.map"
+  "static/css/main.03383f26.chunk.css.map": "/Sticky-App/static/css/main.03383f26.chunk.css.map"
 }
